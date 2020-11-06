@@ -27,11 +27,12 @@ pincode = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/an
 pincodeEnter = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.EditText")
 pincodeApply = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup")
 
-brand = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ViewAnimator/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.ToggleButton[3]")
-
-brandname = ("//android.view.View[@content-desc=\"PHILIPS\"]/android.view.View")
-
 tv = ("//android.view.View[@content-desc=\"Philips 164 cm (65 inches) 6700 Series 4K Ambilight LED Smart TV 65PUT6703S/94 (Dark Sliver) 3.9 out of 5 stars 11\"]/android.view.View[1]")
+
+AddToCart =("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ViewAnimator/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[5]/android.view.View/android.view.View/android.view.View[1]/android.view.View[4]/android.view.View[2]/android.view.View/android.view.View/android.view.View[2]/android.widget.Button")
+
+cart = ("in.amazon.mShop.android.shopping:id/chrome_action_bar_cart_count")
+
 
 
 
@@ -65,8 +66,40 @@ class AmazonShoppingTestCases(unittest.TestCase):
         self.driver.instance.find_element_by_xpath(pincodeApply).click()
         self.driver.instance.implicitly_wait(5)
         
+    def test_TestCase_D_Amazon_Search_Product(self):
+        self.driver.instance.find_element_by_id(productSearch).click()
+        time.sleep(2)
+        self.driver.instance.find_element_by_id(productSearch)
+        self.driver.instance.find_element_by_id(productSearch).send_keys("65-inch TV")
+        self.driver.instance.press_keycode(66)
+        time.sleep(2)
+        touch = TouchAction(self.driver.instance)
+        for scrolldown in range(5):
+            touch.press(x=824, y=2068).move_to(x=769, y=700).release().perform()
+            
+        for scrollup in range(5):
+            touch.press(x=627, y=1689).move_to(x=618, y=2078).release().perform()
+            
+    def test_TestCase_E_Amazon_Add_Product_to_Cart(self):
+        self.driver.instance.find_element_by_id(productSearch).click()
+        time.sleep(2)
+        self.driver.instance.find_element_by_id(productSearch)
+        self.driver.instance.find_element_by_id(productSearch).send_keys("65-inch TV philips")
+        self.driver.instance.press_keycode(66)
     
-    
+        self.driver.instance.find_element_by_xpath(tv).click()
+        
+        touch = TouchAction(self.driver.instance)
+        for i in range(5):
+            touch.press(x=924, y=1268)   .move_to(x=929, y=979)   .release()   .perform()
+            
+        time.sleep(2)
+            
+        self.driver.instance.find_element_by_xpath(AddToCart).click()
+        
+    def test_TestCase_F_Amazon_Product_Checkout(self):
+        self.driver.instance.find_element_by_id(cart)
+
     def tearDown(self):
         self.driver.instance.quit()
 
