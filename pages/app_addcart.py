@@ -1,11 +1,13 @@
-from locators.locators import Locators
+from locators.locators import *
 
 import time
 
-cart = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.FrameLayout")
+from driver.desiredcapabilities import *
 
-cartcount = ("in.amazon.mShop.android.shopping:id/chrome_action_bar_cart_count")
-
+#testcase to check the product is the cart
 class app_addcart:
-    def test_6(self):
-        self.driver.instance.find_element_by_xpath(cart)
+    def test_7(self):
+        self.driver.instance.implicitly_wait(5)
+        checkcart = self.driver.instance.find_element_by_xpath(Locators.cart)
+        checkcart.click()
+        LOGGER.info("==== Checking the cart ")

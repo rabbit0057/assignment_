@@ -1,12 +1,29 @@
-from locators.locators import Locators
+from locators.locators import *
+
+from driver.desiredcapabilities import *
+
+import unittest
+from selenium.common.exceptions import NoSuchElementException
+
 
 import time
 
-selectLanguage = ("Continue in English")
+# testcase to launch and select english as language 
+class app_launch:
+    def test_2(self):
+        self.driver.instance.back()
+        time.sleep(2)   
+        self.driver.instance.implicitly_wait(5)
+        appLanguageSelection = self.driver.instance.find_element_by_accessibility_id(Locators.selectLanguage)
 
-class app_launch(Locators):
-    def test_1(self):
-        time.sleep(2)
-        self.driver.instance.implicitly_wait(5)
-        self.driver.instance.find_element_by_accessibility_id(selectLanguage).click()
-        self.driver.instance.implicitly_wait(5)
+        if appLanguageSelection.is_displayed():
+            LOGGER.info("==== English language button is displayed")
+            appLanguageSelection.click()
+            LOGGER.info("==== Selected english as language")
+            self.driver.instance.implicitly_wait(5)
+
+      
+
+        
+
+

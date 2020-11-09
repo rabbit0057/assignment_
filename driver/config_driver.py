@@ -1,25 +1,27 @@
 from appium import webdriver
 
+from driver.desiredcapabilities import *
+
 import os
 
 class Driver:
 
     def __init__(self):
 
+        # Desiredcapabilities are defined 
         desired_caps = {
-            "platformName": "Android",
-            "platformVersion": "10",
-            "deviceName": "Samsung Galaxy note 10+",
-            "automationName": "UiAutomator2",
-            "app": os.path.abspath(os.path.join(os.path.dirname(__file__),"apps","Amazon_shopping.apk")),
-            # 'app': os.path.join(APPS_FILE_DIR),
-            "appPackage": "in.amazon.mShop.android.shopping",
-            "appActivity": "com.amazon.mShop.home.HomeActivity",
-            "noReset":"True"
+            "platformName": Test_mobile_type,
+            "platformVersion": TestPlatformVersion,
+            "deviceName": TestDeviceName,
+            "automationName": TestAutomationName,
+            "app": TestApkPath,
+            "appPackage": TestappPackage,
+            "appActivity":TestAppActivity,
+            "noReset":TestNoReset
             }
 
 
-        self.instance = webdriver.Remote("http://0.0.0.0:4723/wd/hub", desired_caps)
+        self.instance = webdriver.Remote(TestIpPort, desired_caps)
 
         
         

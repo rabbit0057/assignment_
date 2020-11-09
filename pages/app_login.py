@@ -1,11 +1,19 @@
-from locators.locators import Locators
+from locators.locators import *
+
+import unittest
+
+from driver.desiredcapabilities import *
 
 import time
 
-skipLogin = ("in.amazon.mShop.android.shopping:id/skip_sign_in_button")
-
-
+# testcase to log-in as guest  
 class app_login:
-    def test_2(self):
-        self.driver.instance.find_element_by_id(skipLogin).click()
+    def test_3(self):
         self.driver.instance.implicitly_wait(5)
+        Loginme = self.driver.instance.find_element_by_id(Locators.skipLogin)
+
+        if Loginme.is_displayed():
+            Loginme.click()
+            LOGGER.info("==== Logged in as guest user")
+            self.driver.instance.implicitly_wait(5)
+
