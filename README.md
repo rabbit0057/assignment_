@@ -7,7 +7,7 @@ Real Android Device : Samsung Galaxy note 10+
 OS Verion : 10
 
 Run the testcase using the command 
-  python3 testcases.py
+  sh run.sh
 
 Testcase related Pass/Fail will get updated in terminal.
 
