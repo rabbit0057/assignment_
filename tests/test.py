@@ -29,20 +29,20 @@ class AmazonShoppingTestCases(unittest.TestCase):
     def setUp(self):
         self.driver = Driver() 
 
-    # def test_TestCase_A_Amazon_App_Installed(self):
-    #     app_install.test_1(self)
+    def test_TestCase_A_Amazon_App_Installed(self):
+        app_install.test_1(self)
 
-    # def test_TestCase_B_Amazon_App_Launch(self):
-    #     app_launch.test_2(self)
+    def test_TestCase_B_Amazon_App_Launch(self):
+        app_launch.test_2(self)
 
-    # def test_TestCase_C_Amazon_App_Login(self):
-    #     app_login.test_3(self)
+    def test_TestCase_C_Amazon_App_Login(self):
+        app_login.test_3(self)
 
-    # def test_TestCase_D_Amazon_Adding_Pincode(self):
-    #     app_pincode.test_4(self)
+    def test_TestCase_D_Amazon_Adding_Pincode(self):
+        app_pincode.test_4(self)
         
-    # def test_TestCase_E_Amazon_Search_Product(self):
-    #     app_product_search.test_5(self)
+    def test_TestCase_E_Amazon_Search_Product(self):
+        app_product_search.test_5(self)
             
     def test_TestCase_F_Amazon_Add_Product_to_Cart(self):
         app_cart.test_6(self)
